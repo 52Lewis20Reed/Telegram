@@ -15,10 +15,6 @@ def send_initial_message(update, context):
     if update.message.chat.type == 'group':
         context.bot.send_message(chat_id=update.message.chat_id, text="Hello! I'm here and ready to engage.")
 
-def send_initial_message(update, context):
-    if update.message.chat.type == 'group':
-        context.bot.send_message(chat_id=update.message.chat_id, text="Hello! I'm here and ready to engage.")
-
 def reply_to_message(update, context):
     message = update.message.text.lower()
     username = update.message.from_user.username  # Retrieving the username
