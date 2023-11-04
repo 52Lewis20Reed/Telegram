@@ -15,6 +15,10 @@ def send_initial_message(update, context):
     if update.message.chat.type == 'group':
         context.bot.send_message(chat_id=update.message.chat_id, text="Hello! I'm here and ready to engage.")
 
+def send_initial_message(update, context):
+    if update.message.chat.type == 'group':
+        context.bot.send_message(chat_id=update.message.chat_id, text="Hello! I'm here and ready to engage.")
+
 def reply_to_message(update, context):
     message = update.message.text.lower()
     username = update.message.from_user.username  # Retrieving the username
@@ -49,19 +53,19 @@ def reply_to_message(update, context):
         chosen_response = random.choice(responses)
         context.bot.send_message(chat_id=update.message.chat_id, text=chosen_response)
         
-    if message.startswith('you know'):
+    if 'you know' in message:
         context.bot.send_message(chat_id=update.message.chat_id, text= "No, I don't know that")
         
-    if message.startswith('thot'):
+    if 'thot' in message:
         context.bot.send_message(chat_id=update.message.chat_id, text= "Yo momma a thot!")
         
-    if message.startswith('soggy'):
+    if 'soggy' in message:
         context.bot.send_message(chat_id=update.message.chat_id, text= "Yo momma soggy")
         
-    if message.startswith('wet'):
+    if 'wet' in message:
         context.bot.send_message(chat_id=update.message.chat_id, text= "Wet like yo momma!")
 
-    if message.startswith('milk'):
+    if 'milk'in message:
         context.bot.send_message(chat_id=update.message.chat_id, text= "I milked yo momma!")
 
     elif message.startswith('how'):
@@ -116,7 +120,12 @@ def reply_to_message(update, context):
         context.bot.send_message(chat_id=update.message.chat_id, text="Naw you need a THUG in yo life if bustas ain't loving you right!")
     
     if 'man' in message and len(message) == 3:  # Checking for the standalone word "man"
-        responses = ["MAN WHAT", "Bear", "MAAAAAAN", "Woman (something Fatol will never have)"]
+        responses = ["MAN WHAT", "Bear", "MAAAAAAN", "Woman (something Fatol will never have)","Woman"]
+        chosen_response = random.choice(responses)
+        context.bot.send_message(chat_id=update.message.chat_id, text=chosen_response)  
+        
+    if 'Stfu' in message and len(message) == 4:  # Checking for the standalone word "man"
+        responses = ["No, YOU shut the fuck up, idiot", "K", "No"]
         chosen_response = random.choice(responses)
         context.bot.send_message(chat_id=update.message.chat_id, text=chosen_response)  
         
@@ -155,6 +164,7 @@ def reply_to_message(update, context):
 
     if 'mistake' in message:
         snarky_responses = [
+            "Yeah it was a mistake alright, just like the birth of Fatol"
             "Mistakes are just experiences in disguise.",
             "Welcome to the 'Oops' club!",
             "Mistakes are just innovative discoveries."
@@ -184,7 +194,7 @@ def reply_to_message(update, context):
         chosen_snarky_response = random.choice(snarky_responses)
         context.bot.send_message(chat_id=update.message.chat_id, text=chosen_snarky_response)
         
-    if len(message) > 100:
+    if len(message) > 300:
         # Create a mocking message with alternating capital and lowercase letters
         mocked_message = ''.join(
             c.upper() if i % 2 == 0 else c.lower()
